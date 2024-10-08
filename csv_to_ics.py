@@ -29,7 +29,6 @@ for i, row in enumerate(src):
     description += (by_key("Category") + "\n\n") if by_key("Category") else ""
     description += by_key("Body")
     description += ("\n\n" + by_key("Link")) if by_key("Link") else ""
-    print(format_time(by_key("Date"), by_key("Time"), "start"))
     e = ics.Event(
         name=by_key("Title"),
         begin=format_time(by_key("Date"), by_key("Time"), "start"),
