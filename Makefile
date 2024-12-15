@@ -1,2 +1,2 @@
-202408-20241008123507.ics: 202408-20241008123507.csv
+%.ics: %.csv csv_to_ics.py
 	python3 ./csv_to_ics.py < $< > $@

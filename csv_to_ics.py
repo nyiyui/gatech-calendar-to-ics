@@ -16,8 +16,8 @@ def format_time(date: str, time: str, datetime_type):
     else:
         raise TypeError(f"invalid datetime_type {datetime_type}")
     nyc = arrow.now("America/New_York").tzinfo
-    dt = arrow.get(year, month, day, hour, minute)
-    return dt.astimezone(nyc)
+    dt = arrow.get(year, month, day, hour, minute, tzinfo=nyc)
+    return dt
 
 
 src = csv.reader(sys.stdin)
