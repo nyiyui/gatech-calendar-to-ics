@@ -5,9 +5,9 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@attrs:
-    let pkgs = import nixpkgs { config.allowUnfree = true; };
-    in flake-utils.lib.eachSystem flake-utils.lib.defaultSystems (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
+    flake-utils.lib.eachSystem flake-utils.lib.defaultSystems (system:
+    let
+      pkgs = import nixpkgs { config.allowUnfree = true; inherit system; };
       in {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
